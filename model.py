@@ -69,3 +69,16 @@ class Scooter(Base):
 
     def __repr__(self):
         return self.__str__()
+    
+    def to_dict(self):
+        data = {
+                'acquired_date': self.acquired_date.strftime('%Y-%m-%d'),
+                'retired': self.retired,
+                'scooter_type': self.scooter_type.model,
+                'max_speed': self.scooter_type.max_speed,
+                'weight': self.scooter_type.weight,
+                'manufacturer': self.scooter_type.manufacturer.name,
+                'website': self.scooter_type.manufacturer.website
+                }
+        
+        return data
